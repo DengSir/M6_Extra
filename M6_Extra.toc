@@ -1,0 +1,11 @@
+#@debug@
+## Interface: 20501
+#@end-debug@
+#@project-interface@
+## Title: M6_Extra
+## Author: Dencer
+## Version: @project-version@
+## OptionalDeps: M6
+## SavedVariables:
+
+Load.xml
