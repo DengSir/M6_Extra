@@ -30,3 +30,29 @@ end
 onTalentUpdate()
 EV.PLAYER_TALENT_UPDATE = onTalentUpdate
 EV.PLAYER_ENTERING_WORLD = onTalentUpdate
+EV.CHARACTER_POINTS_CHANGED = onTalentUpdate
+
+local function onTrinketUpdate()
+    local sb = {}
+    for slot = 13, 14 do
+        local itemId = GetInventoryItemID('player', slot)
+        local name = itemId and GetItemInfo(itemId)
+        if name then
+            tinsert(sb, name)
+        end
+    end
+
+    local t = #sb > 0 and table.concat(sb, '/')
+    KR:SetStateConditionalValue('trinket', t or false)
+end
+
+local function onEquipmentChanged(_, slot)
+    if not (slot == 13 or slot == 14) then
+        return
+    end
+    onTrinketUpdate()
+end
+
+onTrinketUpdate()
+EV.PLAYER_ENTERING_WORLD = onTrinketUpdate
+EV.PLAYER_EQUIPMENT_CHANGED = onEquipmentChanged

@@ -1,6 +1,8 @@
 <Ui xsi:schemaLocation="http://www.blizzard.com/wow/ui/
 ..\FrameXML\UI.xsd">
     <Script file="Evie.lua" />
+    <Script file="API.lua" />
     <Script file="Addon.lua" />
     <Script file="Conditions.lua" />
+    <Script file="Rewire.lua" />
 </Ui>
