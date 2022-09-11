@@ -25,6 +25,21 @@ RW:SetMetaHintFilter('countall', 'replaceCount', true, function(_meta, value, _t
     return true, count
 end)
 
+RW:SetMetaHintFilter('countany', 'replaceCount', true, function(_meta, value, _target)
+    if value == 'none' then
+        return false, 0
+    end
+
+    local items = ns.splititems(value)
+
+    local sb = {}
+
+    for _, item in ipairs(items) do
+        tinsert(sb, GetItemCount(item))
+    end
+    return true, table.concat(sb, '/')
+end)
+
 -- local function GetCooldown(item)
 --     if GetItemCount(item) > 0 then
 --         return GetItemCooldown(item)
